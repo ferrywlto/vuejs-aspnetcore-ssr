@@ -9,6 +9,7 @@ wwwroot/dist/*.*
 ##already included
 #node_modules/
 *lock.json
+*.[Dd]evelopment.json
 
 # User-specific files
 *.suo
@@ -304,5 +305,3 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-wwwroot/dist/main-client.js
-package-lock.json
