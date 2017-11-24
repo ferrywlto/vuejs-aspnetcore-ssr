@@ -1,0 +1,25 @@
+{
+  "name": "vdn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ferry To",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "vue": "^2.5.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "vue-loader": "^13.5.0",
+    "vue-template-compiler": "^2.5.8",
+    "css-loader": "^0.28.7",
+    "webpack": "^3.3.0"
+  }
+}
