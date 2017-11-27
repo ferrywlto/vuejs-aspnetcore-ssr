@@ -8,6 +8,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex';
 import Message from './Message.vue';
+
 export default {
   components: { Message },
   computed: mapGetters(['messages', 'lastFetchedMessageDate']),

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 
 namespace vdn.Controllers
@@ -16,6 +17,9 @@ namespace vdn.Controllers
 
         [Route("initialMessages")]
         public JsonResult initialMessages(){
+            //Added to simulate initial loading from remote server
+            Thread.Sleep(2000);
+
             var initialMessages = FakeMessageStore.FakeMessages.OrderByDescending(m => m.Date)
             .Take(2);
 
