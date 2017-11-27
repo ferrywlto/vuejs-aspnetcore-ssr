@@ -10,7 +10,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "vue": "^2.5.8"
+    "vue": "^2.5.8",
+    "vuex": "^3.0.1",
+    "lodash": "^4.17.4",
+    "axios": "^0.17.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
