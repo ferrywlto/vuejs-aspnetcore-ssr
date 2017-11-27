@@ -4,7 +4,7 @@ Following his articile and trying to have some write up. (e.g. using latest pack
 
 ## Install and run:
 if Webpack is not installed yet:  
-    npm install -g webpack
+        npm install -g webpack
 
     dotnet restore
     npm install
@@ -49,20 +49,20 @@ To simulate timely API call form remote server, we add the following line in Hom
 
 1. Add nprogess in package.json dependency:  
 
-    "dependencies": {
-        "vue": "^2.5.8",
-        "vuex": "^3.0.1",
-        "vue-router": "^3.0.1",
-        "lodash": "^4.17.4",
-        "axios": "^0.17.1",
-        "nprogress": "^0.2.0"
-    }
+        "dependencies": {
+            "vue": "^2.5.8",
+            "vuex": "^3.0.1",
+            "vue-router": "^3.0.1",
+            "lodash": "^4.17.4",
+            "axios": "^0.17.1",
+            "nprogress": "^0.2.0"
+        }
 
 2. Add style-loader and css-loader to webpack.config:  
 
-    { 
-        test: /\.css$/, 
-        loader: "style-loader!css-loader" 
-    }
+        { 
+            test: /\.css$/, 
+            loader: "style-loader!css-loader" 
+        }
 
 3. Modify ClientApp/vuex/actions.js, add `NProgress.start()` and `NProgress.done()` before and after axios remote call. 
