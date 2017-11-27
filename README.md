@@ -3,13 +3,14 @@ This repository is a clone from Stu Ratcliffe [Server rendering Vue.js applicati
 Following his articile and trying to have some write up. (e.g. using latest packages in package.json)
 
 ## Install and run:
-if Webpack is not installed yet:
+if Webpack is not installed yet:  
     npm install -g webpack
 
     dotnet restore
     npm install
     webpack
     dotnet run
+
 ## Packages used:
 - lodash <- similiar to numpy in Python, utilies library for manipulating array/object.
 - axios <- Promise based HTTP client for the browser and Node.js, think of $.ajax() if you come from jQuery world
@@ -39,13 +40,15 @@ if Webpack is not installed yet:
 Here we try to modify the implementation order different from the original post.
 We are going to add the loading indicator before implementing the Server Side Rendering.
 To simulate timely API call form remote server, we add the following line in HomeController.cs:
+
     public JsonResult initialMessages(){
         //Added to simulate initial loading from remote server
         Thread.Sleep(2000);
         ...
     }
 
-1. Add nprogess in package.json dependency:
+1. Add nprogess in package.json dependency:  
+
     "dependencies": {
         "vue": "^2.5.8",
         "vuex": "^3.0.1",
@@ -53,10 +56,13 @@ To simulate timely API call form remote server, we add the following line in Hom
         "lodash": "^4.17.4",
         "axios": "^0.17.1",
         "nprogress": "^0.2.0"
-}
-2. Add style-loader and css-loader to webpack.config:
+    }
+
+2. Add style-loader and css-loader to webpack.config:  
+
     { 
         test: /\.css$/, 
         loader: "style-loader!css-loader" 
     }
+
 3. Modify ClientApp/vuex/actions.js, add `NProgress.start()` and `NProgress.done()` before and after axios remote call. 
