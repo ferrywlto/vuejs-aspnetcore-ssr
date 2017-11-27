@@ -6,7 +6,7 @@ Following his articile and trying to have some write up. (e.g. using latest pack
 if Webpack is not installed yet:  
 
     npm install -g webpack
-
+else  
     dotnet restore
     npm install
     webpack
