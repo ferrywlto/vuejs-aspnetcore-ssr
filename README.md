@@ -4,7 +4,8 @@ Following his articile and trying to have some write up. (e.g. using latest pack
 
 ## Install and run:
 if Webpack is not installed yet:  
-        npm install -g webpack
+
+    npm install -g webpack
 
     dotnet restore
     npm install
