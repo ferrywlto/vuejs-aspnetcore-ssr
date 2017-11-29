@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-public class ClientState{
+public class ClientState {
     [JsonProperty(PropertyName = "messages")]
     public IEnumerable<Message> Messages {get; set;}
 

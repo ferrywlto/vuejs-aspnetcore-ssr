@@ -1,2 +1,3 @@
-﻿<div id="app"></div>
+﻿@model ClientState
+<div id="app" asp-prerender-module="ClientApp/renderOnServer" asp-prerenderer-data="Model"></div>
 <script src="~/dist/main-client.js" asp-append-version="true"></script>

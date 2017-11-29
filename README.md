@@ -7,6 +7,7 @@ if Webpack is not installed yet:
 
     npm install -g webpack
 else  
+
     dotnet restore
     npm install
     webpack

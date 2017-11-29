@@ -305,3 +305,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+.vscode/set_dev.ps1

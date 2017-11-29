@@ -1,13 +1,16 @@
-import Vue from 'vue';
-import App from './components/App.vue';
-import store from './vuex/store.js';
-import router from './router';
-
+import Vue from 'vue'
+import App from './components/App.vue'
+import store from './vuex/store.js'
+import router from './router'
 
 const app = new Vue({
-    router,
-    store,
-    ...App //... is spread operator if App is Array; is rest(remaining) properties if App is Object
-});
+  router,
+  store,
+  ...App // ... is spread operator if App is Array; is rest(remaining) properties if App is Object
+})
 
-app.$mount('#app');
+export {
+  app,
+  router,
+  store
+}

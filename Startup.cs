@@ -28,8 +28,8 @@ namespace vdn
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory factory)
         {
-            factory.AddConsole(Configuration.GetSection("Logging"));
-            factory.AddDebug();
+            factory.AddConsole();
+            
             if (env.IsDevelopment())
             {   
                 app.UseDeveloperExceptionPage();
