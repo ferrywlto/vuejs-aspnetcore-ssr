@@ -1,5 +1,9 @@
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import {
     app,
     router,
