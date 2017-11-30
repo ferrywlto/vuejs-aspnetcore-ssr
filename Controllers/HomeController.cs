@@ -12,6 +12,14 @@ namespace vdn.Controllers
     {
         public IActionResult Index()
         {            
+            return View();
+        }
+
+        [Route("initialMessages")]
+        public JsonResult initialMessages(){
+            //Added to simulate initial loading from remote server
+            Thread.Sleep(2000);
+
             var initialMessages = FakeMessageStore.FakeMessages
                 .OrderByDescending(m => m.Date)
                 .Take(2);
@@ -21,25 +29,8 @@ namespace vdn.Controllers
                 LastFetchedMessageDate = initialMessages.Last().Date
             };
 
-            return View(initialValues);
+            return Json(initialValues);
         }
-
-        // [Route("initialMessages")]
-        // public JsonResult initialMessages(){
-        //     //Added to simulate initial loading from remote server
-        //     Thread.Sleep(2000);
-
-        //     var initialMessages = FakeMessageStore.FakeMessages
-        //         .OrderByDescending(m => m.Date)
-        //         .Take(2);
-
-        //     var initialValues = new ClientState(){
-        //         Messages = initialMessages,
-        //         LastFetchedMessageDate = initialMessages.Last().Date
-        //     };
-
-        //     return Json(initialValues);
-        // }
 
         [Route("fetchMessages")]
         public JsonResult FetchMessages(DateTime lastFetchedMessageDate){

@@ -1,5 +1,4 @@
 const path = require('path')
-// const webpack = require('webpack')
 
 // using webpack-merge so we don't have to repeat common configuration attributes twice
 const merge = require('webpack-merge')
@@ -33,28 +32,28 @@ module.exports = (env) => {
   })
 
   const clientBundleConfig = merge(sharedConfig(), {
-      entry: { 'main-client': './ClientApp/client.js' },
-      output: {
-          path: path.join(__dirname, 'wwwroot/dist')
-      }
-  });
+    entry: { 'main-client': './ClientApp/client.js' },
+    output: {
+      path: path.join(__dirname, 'wwwroot/dist')
+    }
+  })
 
   const serverBundleConfig = merge(sharedConfig(), {
-      target: 'node',
-      entry: { 'main-server': './ClientApp/server.js' },
-      output: {
-          libraryTarget: 'commonjs2',
-          path: path.join(__dirname, 'wwwroot/dist')
-      },
-      module: {
-          rules: [
-              {
-                  test: /\.json?$/,
-                  loader: 'json-loader'
-              }
-          ]
-      },
-  });
+    target: 'node',
+    entry: { 'main-server': './ClientApp/server.js' },
+    output: {
+      libraryTarget: 'commonjs2',
+      path: path.join(__dirname, 'wwwroot/dist')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.json?$/,
+          loader: 'json-loader'
+        }
+      ]
+    }
+  })
 
-  return [clientBundleConfig, serverBundleConfig];
+  return [clientBundleConfig, serverBundleConfig]
 }

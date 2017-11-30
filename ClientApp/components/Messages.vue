@@ -14,8 +14,8 @@ export default {
   computed: mapGetters(['messages', 'lastFetchedMessageDate']),
   methods: 
     mapActions(['fetchMessages']), 
-    asyncData ({ $store }) {
-      return $store.dispatch('fetchInitialMessages')
+    asyncData ({ store }) {
+      return store.dispatch('fetchInitialMessages')
     }
 }
 </script>

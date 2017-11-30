@@ -10,13 +10,13 @@ const store = new Vuex.Store({
 
   mutations: {
     INITIAL_MESSAGES: (state, payload) => {
-        state.messages = payload.messages
-        state.lastFetchedMessageDate = payload.lastFetchedMessageDate
-      },
+      state.messages = payload.messages
+      state.lastFetchedMessageDate = payload.lastFetchedMessageDate
+    },
     FETCH_MESSAGES: (state, payload) => {
-        state.messages = state.messages.concat(payload)
-        state.lastFetchedMessageDate = minBy(state.messages, 'date').date
-      }
+      state.messages = state.messages.concat(payload)
+      state.lastFetchedMessageDate = minBy(state.messages, 'date').date
+    }
   },
   actions: {
     fetchInitialMessages,
