@@ -1,6 +1,6 @@
 # README
 
-This repository was built from scratch following the steps described in the original blog post *[Server rendering Vue.js applications with ASP.NET Core](https://stu.ratcliffe.io/2017/07/20/vuejs-serverside-rendering-with-aspnet-core)* from Stu Ratcliffe. The aim of this repository is to adding more steps and comments from my experience following the steps that make it works as a supplement of the original blog post. Hope this helps if you also read the same blog post and got stuck some way. :)
+This repository was built from scratch following the steps described in the original blog post *[Server rendering Vue.js applications with ASP.NET Core](https://stu.ratcliffe.io/2017/07/20/vuejs-serverside-rendering-with-aspnet-core)* from Stu Ratcliffe. The aim of this repository is to adding more steps and comments from my experience following the steps that make it works as a supplement of the original blog post. I personally did not have any prior knowledge in VueJS nor modern web development frameworks. I were a C# developer and learn VueJS by my own from VueJS documentation and Stu Ratcliffe blog post. Hope this helps if you also read the same blog post and got stuck some way. :pray: :grinning:
 
 You can get the complete code repo made by Stu Ratcliffe from [[Here]](https://github.com/sturatcliffe/VueDotnetSSR)
 
@@ -120,3 +120,14 @@ To simulate timely API call form remote server, we add the following line in Hom
   
 ### Thoughts:
 SSR was by far the most difficult part of my VueJS journey, it takes more than half of the time of my VueJS learning. Whether to use Server Side Rendering or not is highly optional, you don't need it to write a cool SPA. The performance and user experience gain is arguablely worth the complexity and develop time involved.
+
+### BootstrapVue:
+Bootstrap is a very popular library for beautiful and simple UI components and styles.
+Using Bootstrap in VueJS application is easy with BootstrapVue:
+
+- Install: `npm i bootstrap-vue bootstrap@4.0.0-beta.2`
+- Import into app.js: `import BootstrapVue from 'bootstrap-vue'
+- Import the css files: (tricky here, for this repo I need to add the imports at client.js instead of app.js)  
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'boostrap-vue/dist/bootstrap-vue.css'
+- Add the Bootstrap components (e.g. I added a badge at Dashboard.vue template.)

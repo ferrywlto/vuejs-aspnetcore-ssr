@@ -34,8 +34,11 @@ namespace vdn.Controllers
 
         [Route("fetchMessages")]
         public JsonResult FetchMessages(DateTime lastFetchedMessageDate){
-            return Json(FakeMessageStore.FakeMessages.OrderByDescending(m => m.Date)
-            .SkipWhile(m => m.Date >= lastFetchedMessageDate).Take(1));
+            return Json(Message.CreateMessage(
+                "New Message",
+                DateTime.Now.Millisecond.ToString(),
+                DateTime.Now
+            ));
         }
     }
 }
