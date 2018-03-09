@@ -6,24 +6,22 @@ const path = require('path')
 const filePath = path.join(__dirname, '../wwwroot/dist/main-server.js')
 const code = fs.readFileSync(filePath, 'utf8')
 
-const bundleRenderer = require('vue-server-renderer').createBundleRenderer(code)
+var prerendering = require('aspnet-prerendering')
 
-module.exports = function (params) {
-  return new Promise(function (resolve, reject) {
-    const context = {
-      url: params.url
-    }
+//prevent XSS attack when initialize state
+var serialize = require('serialize-javascript')
 
-    bundleRenderer.renderToString(context, (err, resultHtml) => {
-      if (err) {
-        reject(err.message)
+module.exports = prerendering.createServerRenderer(function (params) {
+  return new Promise(
+    function (resolve, reject) {
+      const context = {
+        url: params.url,
+        xss: serialize("</script><script>alert('Possible XSS vulnerability from user input!')</script>")
       }
       resolve({
-        html: resultHtml,
         globals: {
-          __INITIAL_STATE__: context.state
+          __INITIAL_STATE__: context
         }
       })
-    })
   })
-}
+});

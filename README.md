@@ -99,7 +99,7 @@ To simulate timely API call form remote server, we add the following line in Hom
         - webpack-merge
     - dependencies:
         - vue-server-renderer
-        - aspnet-prerenderer *(Note that only version ^1.0.0 is supported, using latest ^3.0.0+ will break the code.)*
+        - aspnet-prerenderer
 
 2. Split the code into two part:
 
@@ -131,3 +131,51 @@ Using Bootstrap in VueJS application is easy with BootstrapVue:
     import 'bootstrap/dist/css/bootstrap.css'
     import 'boostrap-vue/dist/bootstrap-vue.css'
 - Add the Bootstrap components (e.g. I added a badge at Dashboard.vue template.)
+
+### Prevent XSS Attack:
+During the jounary in solveing the asp-prerendering v3.0.0+ dependency issue, I found an article talking about Cross-site scripting attack in JavaScript applications: *[The Most Common XSS Vulnerability in React.js Applications](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0)* And turns out rednerOnServer.js also has such vulnerability.
+
+    module.exports = prerendering.createServerRenderer(function (params) {
+    return new Promise(
+        function (resolve, reject) {
+        const context = {
+            url: params.url,
+            xss:"</script><script>alert('Possible XSS vulnerability from user input!')</script>"
+        }
+        resolve({
+            globals: {
+            __INITIAL_STATE__: context
+            }
+        })
+    })
+    });
+
+If we modify the renderOnServer.js as above, an alert will be shown when we load the page from browser. This will potentially enable attacker to execute arbitary code. To fix this vulnerability, we can make use of `serialize-javascript` package from Yahoo engineers and cleanse all initial state assignment from user input:
+
+    npm install --save serialize-javascript
+
+and serialize the initial state like this:
+
+    //prevent XSS attack when initialize state
+    var serialize = require('serialize-javascript')
+
+    module.exports = prerendering.createServerRenderer(function (params) {
+        return new Promise(
+            function (resolve, reject) {
+                const context = {
+                url: params.url,
+                xss: serialize("</script><script>alert('Possible XSS vulnerability from user input!')</script>")
+            }
+            resolve({
+                globals: {
+                __INITIAL_STATE__: context
+                }
+            })
+        })
+    });
+
+and when you inspect the HTML from browser you will see the tags are escaped:
+
+    window.__INITIAL_STATE__ = {"url":"/","xss":"\"\\u003C\\u002Fscript\\u003E\\u003Cscript\\u003Ealert('Possible XSS vulnerability from user input!')\\u003C\\u002Fscript\\u003E\""};
+
+Cheers. :smirk:
