@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 
 module.exports = (env) => {
   const sharedConfig = () => ({
+    mode: "development",
     stats: { modules: false },
     resolve: { extensions: ['.js', '.vue'] },
     output: {
@@ -44,14 +45,6 @@ module.exports = (env) => {
     output: {
       libraryTarget: 'commonjs2',
       path: path.join(__dirname, 'wwwroot/dist')
-    },
-    module: {
-      rules: [
-        {
-          test: /\.json?$/,
-          loader: 'json-loader'
-        }
-      ]
     }
   })
 
