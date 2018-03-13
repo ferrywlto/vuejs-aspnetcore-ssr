@@ -133,7 +133,7 @@ Using Bootstrap in VueJS application is easy with BootstrapVue:
 - Add the Bootstrap components (e.g. I added a badge at Dashboard.vue template.)
 
 ### Prevent XSS Attack:
-During the journey in solveing the asp-prerendering v3.0.0+ dependency issue, I found an article talking about Cross-site scripting attack in JavaScript applications: *[The Most Common XSS Vulnerability in React.js Applications](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0)* And turns out rednerOnServer.js also has such vulnerability.
+During the journey in solving the asp-prerendering v3.0.0+ dependency issue, I found an article talking about Cross-site scripting attack in JavaScript applications: *[The Most Common XSS Vulnerability in React.js Applications](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0)* And turns out rednerOnServer.js also has such vulnerability.
 
     module.exports = prerendering.createServerRenderer(function (params) {
     return new Promise(
