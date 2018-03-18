@@ -10,7 +10,9 @@ export const fetchInitialMessages = ({commit}) => {
 }
 
 export const fetchMessages = ({commit}, lastFetchedMessageDate) => {
-  axios.get('http://localhost:5000/fetchMessages?lastFetchedMessageDate=' + lastFetchedMessageDate)
+  axios.post('http://localhost:5000/fetchMessages',{
+    lastMessageDate : lastFetchedMessageDate
+  })
     .then(response => {
       commit('FETCH_MESSAGES', response.data)
     }).catch(err => {
