@@ -5,15 +5,16 @@ This repository was built from scratch following the steps described in the orig
 You can get the complete code repo made by Stu Ratcliffe from [[Here]](https://github.com/sturatcliffe/VueDotnetSSR)
 
 ## Install and run:
-if Webpack is not installed yet:  
-
-    npm install -g webpack
-else  
-
     dotnet restore
     npm install
-    webpack
     dotnet run
+
+if you see the following lines, than you are looking great!
+
+    Now listening on: http://localhost:5000
+    Application started. Press Ctrl+C to shut down.
+    info: Microsoft.AspNetCore.NodeServices[0]
+        webpack built c91dc3e2f186f013c53c in 3212ms
 
 ## Packages used: *The description may not accurate, just my understanding*
 - vue <- VueJS
@@ -26,6 +27,7 @@ else
 - aspnet-prerendering <- enable ASP.NET to trigger Node for SSR
 
 - webpack <- pack your JavaScript files into bundles for faster loading, remove duplicate imports, reduce final code size
+- webpack-cli <- since webpack version 4 the command line tool placed in this package instead, install only if you want to pack the JavaScript code manually
 - webpack-merge <- merge webpack config so common configuration attributes can be shared among configurations
 - webpack-hot-middleware <- enable hot reload of code changes
 - aspnet-webpack <- enable ASP.NET to execute webpack on demand during runtime.
@@ -123,9 +125,9 @@ SSR was by far the most difficult part of my VueJS journey, it takes more than h
 
 ### BootstrapVue:
 Bootstrap is a very popular library for beautiful and simple UI components and styles.
-Using Bootstrap in VueJS application is easy with BootstrapVue:
+Using Bootstrap in VueJS application is easy with BootstrapVue (it seems bootstrap is not required in package.json to use bootstrap-vue, installing bootstrap-vue install bootstrap as well):
 
-- Install: `npm i bootstrap-vue bootstrap@4.0.0-beta.2`
+- Install: `npm i bootstrap-vue`
 - Import into app.js: `import BootstrapVue from 'bootstrap-vue'
 - Import the css files: (tricky here, for this repo I need to add the imports at client.js instead of app.js)  
     import 'bootstrap/dist/css/bootstrap.css'
