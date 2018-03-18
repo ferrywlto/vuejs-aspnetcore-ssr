@@ -17,9 +17,6 @@ namespace vdn.Controllers
 
         [Route("initialMessages")]
         public JsonResult initialMessages(){
-            //Added to simulate initial loading from remote server
-            Thread.Sleep(2000);
-
             var initialMessages = FakeMessageStore.FakeMessages
                 .OrderByDescending(m => m.Date)
                 .Take(2);
@@ -32,13 +29,25 @@ namespace vdn.Controllers
             return Json(initialValues);
         }
 
+        [HttpPost]
         [Route("fetchMessages")]
-        public JsonResult FetchMessages(DateTime lastFetchedMessageDate){
-            return Json(Message.CreateMessage(
-                "New Message",
-                DateTime.Now.Millisecond.ToString(),
-                DateTime.Now
-            ));
+        public JsonResult FetchMessages([FromBody]FetchMessageRequest request){
+            var messages = FakeMessageStore.FakeMessages
+                .OrderByDescending(m => m.Date)
+                .Where(p => p.Date < request.lastMessageDate);
+            
+            if(messages.Any()){
+                var newMessages = messages.Take(2);
+                return Json(new ClientState()
+                {
+                    Messages = newMessages,
+                    LastFetchedMessageDate = newMessages.Last().Date
+                });
+            }
+            return Json(null);
         }
+    }
+    public class FetchMessageRequest {
+        public DateTime lastMessageDate {get; set;}
     }
 }

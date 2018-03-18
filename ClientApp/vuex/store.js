@@ -14,7 +14,7 @@ const store = new Vuex.Store({
       state.lastFetchedMessageDate = payload.lastFetchedMessageDate
     },
     FETCH_MESSAGES: (state, payload) => {
-      state.messages = state.messages.concat(payload)
+      state.messages = state.messages.concat(payload.messages)
       state.lastFetchedMessageDate = minBy(state.messages, 'date').date
     }
   },
