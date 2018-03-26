@@ -2,9 +2,9 @@ import Vue from 'vue'
 import App from './components/App.vue'
 import store from './vuex/store.js'
 import router from './router'
-import BootstrapVue from 'bootstrap-vue'
+//import BootstrapVue from 'bootstrap-vue'
 
-Vue.use(BootstrapVue)
+ //Vue.use(BootstrapVue)
 
 const app = new Vue({
   router,

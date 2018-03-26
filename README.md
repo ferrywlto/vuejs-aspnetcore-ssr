@@ -99,7 +99,7 @@ To simulate timely API call form remote server, we add the following line in Hom
     - devDependencies:
         - aspnet-webpack
         - webpack-merge
-    - dependencies:
+    - dependencies:x
         - vue-server-renderer
         - aspnet-prerenderer
 
@@ -181,3 +181,7 @@ and when you inspect the HTML from browser you will see the tags are escaped:
     window.__INITIAL_STATE__ = {"url":"/","xss":"\"\\u003C\\u002Fscript\\u003E\\u003Cscript\\u003Ealert('Possible XSS vulnerability from user input!')\\u003C\\u002Fscript\\u003E\""};
 
 Cheers. :smirk:
+
+### Reference
+*[Building Single Page Applications on ASP.NET Core with JavaScriptServices](https://blogs.msdn.microsoft.com/webdev/2017/02/14/building-single-page-applications-on-asp-net-core-with-javascriptservices/)*
+*[Use JavaScriptServices to Create Single Page Applications in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/client-side/spa-services)*

@@ -11,14 +11,14 @@ export default context => {
       }
       Promise.all(matchedComponents.map(Component => {
         if (Component.asyncData) {
-          return Component.asyncData({
-            store
-          })
+          return Component.asyncData({ store })
         }
-      })).then(() => {
+      }))
+      .then(() => {
         context.state = store.state
         resolve(app)
-      }).catch(reject)
+      })
+      .catch(reject)
     }, reject)
   })
 }
