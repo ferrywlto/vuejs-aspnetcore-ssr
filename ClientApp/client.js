@@ -9,7 +9,9 @@ import {
     router,
     store
 } from './app'
-
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue)
 store.replaceState(__INITIAL_STATE__)
 
 router.onReady(() => {
