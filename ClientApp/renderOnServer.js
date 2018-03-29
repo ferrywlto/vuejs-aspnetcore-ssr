@@ -30,7 +30,7 @@ module.exports = prerendering.createServerRenderer(function (params) {
         resolve({
           globals: {
             html: _html,
-            __INITIAL_STATE__: context.state
+            __INITIAL_STATE__: context.data
           }
         })
       })
