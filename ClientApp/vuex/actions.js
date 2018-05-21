@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const fetchInitialMessages = ({commit}) => {
+export const fetchInitialMessages = ({commit}, origin) => {
   // this one will run on server so it need FQDN or server won't able to resolve the API address
-  return axios.get('http://localhost:5000/initialMessages').then(response => {
+  return axios.get(`${origin}/initialMessages`).then(response => {
     commit('INITIAL_MESSAGES', response.data)
   }).catch(err => {
     console.log(err)
@@ -10,7 +10,7 @@ export const fetchInitialMessages = ({commit}) => {
 }
 
 export const fetchMessages = ({commit}, lastFetchedMessageDate) => {
-  axios.post('http://localhost:5000/fetchMessages',{
+  axios.post('/fetchMessages',{
     lastMessageDate : lastFetchedMessageDate
   })
     .then(response => {
