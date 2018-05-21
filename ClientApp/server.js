@@ -11,7 +11,7 @@ export default context => {
       }
       Promise.all(matchedComponents.map(Component => {
         if (Component.asyncData) {
-          return Component.asyncData({ store })
+          return Component.asyncData({ store, context })
         }
       }))
       .then(() => {

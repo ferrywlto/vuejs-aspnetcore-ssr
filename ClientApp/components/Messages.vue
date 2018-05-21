@@ -12,10 +12,10 @@ import Message from './Message.vue';
 export default {
   components: { Message },
   computed: mapGetters(['messages', 'lastFetchedMessageDate']),
-  methods: 
-    mapActions(['fetchMessages']), 
-    asyncData ({ store }) {
-      return store.dispatch('fetchInitialMessages')
+  methods:
+    mapActions(['fetchMessages']),
+    asyncData ({ store, context }) {
+      return store.dispatch('fetchInitialMessages', context.origin)
     }
 }
 </script>
