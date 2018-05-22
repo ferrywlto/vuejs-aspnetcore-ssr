@@ -15,7 +15,8 @@ export default {
   methods:
     mapActions(['fetchMessages']),
     asyncData ({ store, context }) {
-      return store.dispatch('fetchInitialMessages', context.origin)
+      let origin = context ? context.origin : window.location.origin
+      return store.dispatch('fetchInitialMessages', origin)
     }
 }
 </script>
