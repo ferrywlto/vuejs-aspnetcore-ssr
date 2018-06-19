@@ -1,5 +1,6 @@
 const path = require('path')
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 // using webpack-merge so we don't have to repeat common configuration attributes twice
 const merge = require('webpack-merge')
 
@@ -22,14 +23,43 @@ module.exports = (env) => {
           test: /\.js$/,
           loader: 'babel-loader',
           include: __dirname,
-          exclude: /node_modules/
+          exclude: file => (
+            /node_modules/.test(file) &&
+            !/\.vue\.js/.test(file)
+          )
         },
         {
           test: /\.css$/,
-          loader: 'style-loader!css-loader'
+          oneOf: [
+            // this matches `<style module>`
+            {
+              resourceQuery: /module/,
+              use: [
+                'vue-style-loader',
+                {
+                  loader: 'css-loader',
+                  options: {
+                    modules: true,
+                    localIdentName: '[local]_[hash:base64:5]'
+                  }
+                }
+              ]
+            },
+            // this matches plain `<style>` or `<style scoped>`
+            {
+              use: [
+                'vue-style-loader',
+                'css-loader'
+              ]
+            }
+          ]
+
         }
       ]
-    }
+    },
+    plugins: [
+      new VueLoaderPlugin()
+    ]
   })
 
   const clientBundleConfig = merge(sharedConfig(), {
