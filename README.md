@@ -4,6 +4,10 @@ This repository was built from scratch following the steps described in the orig
 
 You can get the complete code repo made by Stu Ratcliffe from [[Here]](https://github.com/sturatcliffe/VueDotnetSSR)
 
+Once you get used to this repository, you may want to know how to do the same thing in Typescript.
+@Kukks has forked this repository and use Typescript instead. 
+You can find his repository [Here](https://github.com/Kukks/vuejs-aspnetcore-ssr/tree/feature/langspecific)
+
 ## Install and run:
     dotnet restore
     npm install
