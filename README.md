@@ -2,11 +2,11 @@
 
 This repository was built from scratch following the steps described in the original blog post *[Server rendering Vue.js applications with ASP.NET Core](https://stu.ratcliffe.io/2017/07/20/vuejs-serverside-rendering-with-aspnet-core)* from Stu Ratcliffe. The aim of this repository is to adding more steps and comments from my experience following the steps that make it works as a supplement of the original blog post. I personally did not have any prior knowledge in VueJS nor modern web development frameworks. I were a C# developer and learn VueJS by my own from VueJS documentation and Stu Ratcliffe blog post. Hope this helps if you also read the same blog post and got stuck some way. :pray: :grinning:
 
-You can get the complete code repo made by Stu Ratcliffe from [[Here]](https://github.com/sturatcliffe/VueDotnetSSR)
+You can get the complete code repo made by **Stu Ratcliffe** from [[Here]](https://github.com/sturatcliffe/VueDotnetSSR)
 
 Once you get used to this repository, you may want to know how to do the same thing in Typescript.
-@Kukks has forked this repository and use Typescript instead. 
-You can find his repository [Here](https://github.com/Kukks/vuejs-aspnetcore-ssr/tree/feature/langspecific)
+**@Kukks** has forked this repository and use Typescript instead. 
+You can find his repository [[Here]](https://github.com/Kukks/vuejs-aspnetcore-ssr/tree/feature/langspecific)
 
 ## Install and run:
     dotnet restore
