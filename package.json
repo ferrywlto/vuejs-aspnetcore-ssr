@@ -23,7 +23,7 @@
     "json-loader": "^0.5.7",
     "lodash": "^4.17.11",
     "nprogress": "^0.2.0",
-    "serialize-javascript": "^4.0.0",
+    "serialize-javascript": "^6.0.0",
     "style-loader": "^1.2.1",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
