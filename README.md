@@ -1,5 +1,11 @@
 # README
 
+Update 2022/05/01: I was trying to figure out how to do SSR in .NET6 for Vue3 app, 
+however it seems Microsoft has ditched the SPA / JS Service in favor of Blazor since .NETCore 3.
+Therefore it seems not possible to do SSR in ASP.NET for Vue anymore... -_-
+
+[[Announcement] Obsoleting Microsoft.AspNetCore.SpaServices and Microsoft.AspNetCore.NodeServices](https://github.com/dotnet/AspNetCore/issues/12890)
+
 This repository was built from scratch following the steps described in the original blog post *[Server rendering Vue.js applications with ASP.NET Core](https://stu.ratcliffe.io/2017/07/20/vuejs-serverside-rendering-with-aspnet-core)* from Stu Ratcliffe. The aim of this repository is to adding more steps and comments from my experience following the steps that make it works as a supplement of the original blog post. I personally did not have any prior knowledge in VueJS nor modern web development frameworks. I were a C# developer and learn VueJS by my own from VueJS documentation and Stu Ratcliffe blog post. Hope this helps if you also read the same blog post and got stuck some way. :pray: :grinning:
 
 You can get the complete code repo made by **Stu Ratcliffe** from [[Here]](https://github.com/sturatcliffe/VueDotnetSSR)
@@ -101,26 +107,26 @@ To simulate timely API call form remote server, we add the following line in Hom
 1. Add the following dependencies to package.json:
 
     - devDependencies:
-        - aspnet-webpack
+        - aspnet-webpack [Replaced by Microsoft.AspNetCore.SpaServices.Extensions]
         - webpack-merge
     - dependencies:x
         - vue-server-renderer
         - aspnet-prerenderer
 
-2. Split the code into two part:
+3. Split the code into two part:
 
     1. `server.js` <- this will load by renderOnServer.js, which aspnet-prerendering will trigger Node to execute and return pre-rendered result back to renderOnServer.js and thus send to browser as initial state of app.
     2. `client.js` <- once initial app state rendered and injected in the resulting index.cshtml, the script tag will load client.js and mount it to pre-rendered app tag.
 
-3. Create Node server code for ASP.NET Core to trigger the Node hosting service to execute
+4. Create Node server code for ASP.NET Core to trigger the Node hosting service to execute
 
     - `rendererOnServer.js` <- responsible for loading the webpacked server.js for Node to render the initial app state.
 
-4. ASP.NET Core part
+5. ASP.NET Core part
 
     - Edit `Views/Home/index.cshtml` app tag to use `aspnet-prerendering` attributes
 
-5. Webpack Configuration
+6. Webpack Configuration
 
     - Edit `webpack.config.js`, make use of `webpack-merge` to split the original configuration into two sets.
   
