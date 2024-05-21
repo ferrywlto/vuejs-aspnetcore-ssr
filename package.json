@@ -13,7 +13,7 @@
   "devDependencies": {
     "aspnet-prerendering": "3.0.1",
     "aspnet-webpack": "^3.0.0",
-    "axios": "^0.20.0",
+    "axios": "^1.3.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^9.1.2",
     "babel-preset-es2015": "^6.24.1",
