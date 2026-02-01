@@ -27,7 +27,7 @@
     "style-loader": "^4.0.0",
     "vue": "^2.6.10",
     "vue-loader": "^17.0.0",
-    "vue-router": "^4.0.14",
+    "vue-router": "^5.0.1",
     "vue-server-renderer": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
     "vuex": "^4.0.2",
